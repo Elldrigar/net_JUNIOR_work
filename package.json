@@ -8,7 +8,8 @@
     "url": "https://github.com/Elldrigar/net_JUNIOR_work.git"
   },
   "scripts": {
-    
+    "start": "node server",
+    "server": "nodemon server"
   },
   "author": "Artur Gawron",
   "license": "MIT",
