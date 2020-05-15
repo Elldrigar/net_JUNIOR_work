@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { check, validationResult } = require('express-validator/check');
+const User = require('../../models/User');
 
 // @route   POST api/users
 // @desc    Register user
@@ -21,15 +22,20 @@ router.post(
 	if (!errors.isEmpty()) {
 		return res.status(400).json({ errors: errors.array() });
 	}
-	// See if user exist
+	const { name, email, password } = req.body;
+	try {
+		// See if user exist
 
-	// Get user gravatar
+		// Get user gravatar
 
-	// Encrypt password
+		// Encrypt password
 
-	//return Json webtoken
-		
-	res.send('User route');
+		//return Json webtoken
+
+		res.send('User route');
+	} catch(err) {
+
+	}
 });
 
 module.exports = router;
