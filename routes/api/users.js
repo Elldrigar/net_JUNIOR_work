@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { check, validationResult } = require('express-validator/check');
 const User = require('../../models/User');
+const gravatar = require('gravatar');
 
 // @route   POST api/users
 // @desc    Register user
@@ -31,7 +32,18 @@ router.post(
 		}
 
 		// Get user gravatar
+		const avatar = gravatar.url(email, {
+			s: '200',
+			r: 'pg',
+			d: 'mm'
+		})
 
+		user = new user({
+			name,
+			email,
+			avatar,
+			password
+		})
 		// Encrypt password
 
 		//return Json webtoken
