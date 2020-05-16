@@ -3,6 +3,7 @@ const router = express.Router();
 const { check, validationResult } = require('express-validator/check');
 const User = require('../../models/User');
 const gravatar = require('gravatar');
+const bcryot = require('bcryptjs');
 
 // @route   POST api/users
 // @desc    Register user
@@ -45,7 +46,8 @@ router.post(
 			password
 		})
 		// Encrypt password
-
+		const salt = await bcryot.genSalt(10);
+		user.password = await bcrypt.hash(password, salt);
 		//return Json webtoken
 
 		res.send('User route');
