@@ -3,7 +3,7 @@ const router = express.Router();
 const { check, validationResult } = require('express-validator/check');
 const User = require('../../models/User');
 const gravatar = require('gravatar');
-const bcryot = require('bcryptjs');
+const bcrypt = require('bcryptjs');
 
 // @route   POST api/users
 // @desc    Register user
@@ -19,7 +19,7 @@ router.post(
 	 check('password', 'Podaj Hasło min. 8 znaków')
 		 .isLength({ min:8 })
 ],
-	(req, res) => {
+async (req, res) => {
 	const errors = validationResult(req);
 	if (!errors.isEmpty()) {
 		return res.status(400).json({ errors: errors.array() });
@@ -29,7 +29,7 @@ router.post(
 		// See if user exist
 		let user = await User.findOne( { email });
 		if (user) {
-			res.status(400).json({ errors: [ {msg: 'User already exist'}] });
+			return res.status(400).json({ errors: [ {msg: 'User already exist'}] });
 		}
 
 		// Get user gravatar
@@ -39,18 +39,19 @@ router.post(
 			d: 'mm'
 		})
 
-		user = new user({
+		user = new User({
 			name,
 			email,
 			avatar,
 			password
 		})
 		// Encrypt password
-		const salt = await bcryot.genSalt(10);
+		const salt = await bcrypt.genSalt(10);
 		user.password = await bcrypt.hash(password, salt);
+		await user.save();
 		//return Json webtoken
 
-		res.send('User route');
+		res.send('User registered');
 	} catch(err) {
 		console.error(err.message);
 		res.status(500).send('Server Error!')
