@@ -5,6 +5,7 @@ const User = require('../../models/User');
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const config = require('config');
 
 // @route   POST api/users
 // @desc    Register user
@@ -59,7 +60,7 @@ async (req, res) => {
 		jwt.sign(
 			payload,
 			config.get('jwtToken'),
-			{ expiresIn: 360000 } // TO DO Change to 3600, 
+			{ expiresIn: 360000 } // TO DO Change to 3600,
  		);
 
 		res.send('User registered');
