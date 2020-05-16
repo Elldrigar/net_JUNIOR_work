@@ -4,6 +4,7 @@ const { check, validationResult } = require('express-validator/check');
 const User = require('../../models/User');
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 // @route   POST api/users
 // @desc    Register user
@@ -50,6 +51,16 @@ async (req, res) => {
 		user.password = await bcrypt.hash(password, salt);
 		await user.save();
 		//return Json webtoken
+		const payload = {
+			user: {
+				id: user.id
+			}
+		}
+		jwt.sign(
+			payload,
+			config.get('jwtToken'),
+			{ expiresIn: 360000 } // TO DO Change to 3600, 
+ 		);
 
 		res.send('User registered');
 	} catch(err) {
