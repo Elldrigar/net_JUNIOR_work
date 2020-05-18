@@ -74,9 +74,13 @@ router.post(
 		if (skills) {
 			profileFields.skills = skills.split(',').map(skill => skill.trim());
 		}
-		console.log(profileFields.skills);
-
-		res.send('Hello');
+		//Build social object
+		profileFields.social = {}
+		if (youtube) profileFields.social.youtube = youtube;
+		if (twitter) profileFields.social.twitter = twitter;
+		if (facebook) profileFields.social.facebook = facebook;
+		if (linkedin) profileFields.social.linkedin = linkedin;
+		if (instagram) profileFields.social.instagram = instagram;
 	}
 );
 
