@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../../middleware/auth');
 const User = require('../../models/User');
-const { check, validationResult } = require('express-validator/check');
+const { check, validationResult } = require('express-validator');
 const config = require('config');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
@@ -58,7 +58,7 @@ router.post(
 					id: user.id
 				}
 			}
-			
+
 			jwt.sign(
 				payload,
 				config.get('jwtSecret'),
