@@ -124,11 +124,16 @@ router.get('/user/:user_id', async (req, res) => {
 	try {
 		const profile = await Profile.findOne({ user: req.params.user_id }).populate('user', ['name', 'avatar']);
 
-		if (!profile) return res.status(400).json({ msg: 'Nie znaleziono profilu użytkownika'});
+		if (!profile) {
+			return res.status(400).json({ msg: 'Brak profilu dla tego użytkownika' });
+		}
 		res.json(profile);
-	} catch(err) {
-		console.error(err.message);
-		res.status(500).send('Server Error!')
+	} catch (err) {
+		console.error(`Error while particular user profile : ${err.message}`);
+		if (err.name == 'CastError') {
+			return res.status(400).json({ msg: 'Brak profilu dla tego użytkownika' });
+		}
+		res.status(500).send('Server Error!');
 	}
 });
 module.exports = router;
