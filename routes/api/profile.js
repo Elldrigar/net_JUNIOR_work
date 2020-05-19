@@ -150,4 +150,51 @@ router.delete('/', auth, async (req, res) => {
 		res.status(500).send('Server Error!')
 	}
 });
+
+// @route   PUT api/profile/experience
+// @desc    Add profile experience
+// @Access  Private
+router.put(
+	'/experience',
+	auth,
+	[
+		check('title', 'Nazwa jest wymagana').not().isEmpty(),
+		check('company', 'Nazwa firmy jest wymagana').not().isEmpty(),
+		check('from', 'Data rozpoczęcia jest wymagana').not().isEmpty(),
+	],
+	async (req, res) => {
+		const errors = validationResult(req);
+		if (!errors.isEmpty()) {
+			return res.status(400).json({ errors: errors.array() });
+		}
+
+		const {
+			title,
+			company,
+			location,
+			from,
+			to,
+			current,
+			description
+		} = req.body;
+
+		const newExp = {
+			title,
+			company,
+			location,
+			from,
+			to,
+			current,
+			description
+		}
+
+		try {
+
+		} catch (err) {
+			console.error(err.message);
+			res.status(500).send('Server Error!');
+		}
+	}
+);
+
 module.exports = router;
