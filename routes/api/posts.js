@@ -25,13 +25,13 @@ router.post(
 			return res.status(400).json({ errors: errors.array() });
 		}
 		try {
-			const user = await user.findById(req.user.id).select('-password');
-			const newPost = {
+			const user = await User.findById(req.user.id).select('-password');
+			const newPost = new Post({
 				text: req.body.text,
 				name: user.name,
 				avatar: user.avatar,
 				user: req.user.id
-			}
+			});
 			const post = await newPost.save();
 			res.json(post);
 		} catch (err) {
