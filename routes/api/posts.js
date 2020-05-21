@@ -6,6 +6,22 @@ const auth = require('../../middleware/auth');
 // @route   POST api/posts
 // @desc    Create a post
 // @Access  Private
-router.post('/', (req, res) => res.send('Posts route'));
+router.post(
+	'/',
+	[
+		auth,
+		[
+		check('text', 'Tekst jest wymagany')
+			.not()
+			.isEmpty()
+		]
+	],
+	async (req, res) => {
+		const errors = validationResult(req);
+		if(!errors.isEmpty()) {
+			return res.status(400).json({ errors: errors.array() });
+		}
+		
+	});
 
 module.exports = router;
