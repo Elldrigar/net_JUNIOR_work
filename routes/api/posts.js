@@ -76,9 +76,12 @@ router.get('/:id', auth, async (req, res) => {
 // @route   DELETE api/posts/:id
 // @desc    Delete a post
 // @Access  Private
-router.get('/:id', auth, async (req, res) => {
+router.delete('/:id', auth, async (req, res) => {
 	try {
 		const post = await Post.findById(req.params.id);
+		if (!post) {
+			return res.status(404).json({ msg: 'Postu nie znaleziono'} );
+		}
 		if (post.user.toString() !== req.user.id) {
 			return res.status(401).json({ msg: 'Uzytkownik nie autoryzowany' });
 		}
@@ -86,6 +89,9 @@ router.get('/:id', auth, async (req, res) => {
 		res.json({ msg: 'Post usuniety' });
 	} catch (err) {
 		console.error(err.message);
+		if (err.name === 'CastError') {
+			return res.status(404).json({ msg: 'Postu nie znaleziono!'} );
+		}
 		res.status(500).send('Server Error!')
 	}
 });
