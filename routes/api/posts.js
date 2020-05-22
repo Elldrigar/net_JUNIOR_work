@@ -33,7 +33,7 @@ router.post(
 				user: req.user.id
 			});
 			const post = await newPost.save();
-			res.json(post);
+			return res.json(post);
 		} catch (err) {
 			console.error(err.message);
 			res.status(500).send('Server Error!')
@@ -47,7 +47,7 @@ router.post(
 router.get('/', auth, async (req, res) => {
 	try {
 		const posts = await Post.find().sort({ date: -1 });
-		res.json(posts);
+		return res.json(posts);
 	} catch (err) {
 		console.error(err.message);
 		res.status(500).send('Server Error!')
@@ -63,7 +63,7 @@ router.get('/:id', auth, async (req, res) => {
 		if (!post) {
 			return res.status(404).json({ msg: 'Post nie znaleziony' });
 		}
-		res.json(post);
+		return res.json(post);
 	} catch (err) {
 		console.error(err.message);
 		if (err.kind === 'ObjectId') {
@@ -86,7 +86,7 @@ router.delete('/:id', auth, async (req, res) => {
 			return res.status(401).json({ msg: 'Uzytkownik nie autoryzowany' });
 		}
 		await post.remove();
-		res.json({ msg: 'Post usuniety' });
+		return res.json({ msg: 'Post usuniety' });
 	} catch (err) {
 		console.error(err.message);
 		if (err.name === 'CastError') {
@@ -107,7 +107,7 @@ router.put('/like/:id', auth, async (req, res) => {
 		}
 		post.likes.unshift({ user: req.user.id });
 		await post.save();
-		res.json(post.likes);
+		return res.json(post.likes);
 	} catch (err) {
 		console.error(err.message);
 		res.status(500).send('Server Error');
