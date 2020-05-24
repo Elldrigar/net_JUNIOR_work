@@ -10,7 +10,7 @@
 [twitter-url]: https://twitter.com/Elldrigar
 
 ***
-🇵🇱 'Junior Network' to aplikacja w której można założyć konto, storzyć obszerny Profil pisać posty oraz komentowac i (👍🏻/👎🏻) posty innych użytkowników.
+🇵🇱 __'Junior Network' to aplikacja w której można założyć konto, storzyć obszerny Profil pisać posty oraz komentowac i (👍🏻/👎🏻) posty innych użytkowników.
 
 
 ## Available Scripts:
