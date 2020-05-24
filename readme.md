@@ -9,6 +9,7 @@
 [twitterBadge-url]: https://badgen.net/twitter/follow/Elldrigar?icon=twitter
 [twitter-url]: https://twitter.com/Elldrigar
 
+#🚧 Project is under construction‼️ 🚧
 ***
 🇵🇱 __'Junior Network' to aplikacja w której można założyć konto, storzyć obszerny Profil pisać posty oraz komentowac i (👍🏻/👎🏻) posty innych użytkowników.
 
