@@ -27,10 +27,17 @@ In the project directory, you should run:
 > Starts backend nodemon server on [http://localhost:5000](http://localhost:5000) <br />
 > In root directory you should create : ``default.json`` file and replace uppercases to yours data.
 ```json
-{
-  "mongoURI": "ADD_YOUR_CONNECTION_STRING",
-  "jwtSecret": "mysecrettoken",
-  "githubToken": "YOUR_GITHUB_TOKEN"
-}
+ {
+   "mongoURI": "ADD_YOUR_CONNECTION_STRING",
+   "jwtSecret": "mysecrettoken",
+   "githubToken": "YOUR_GITHUB_TOKEN"
+ }
 ```
+***
+
+```
+    npm dev
+```
+> Starts backend server [http://localhost:5000](http://localhost:5000) and frontend server [http://localhost:3000](http://localhost:3000) 
+together.
 
