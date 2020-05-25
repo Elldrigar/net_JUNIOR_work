@@ -9,7 +9,7 @@
 [twitterBadge-url]: https://badgen.net/twitter/follow/Elldrigar?icon=twitter
 [twitter-url]: https://twitter.com/Elldrigar
 
-#🚧 Project is under construction‼️ 🚧
+# 🚧 Project is under construction‼️ 🚧
 ***
 🇵🇱 __'Junior Network' to aplikacja w której można założyć konto, storzyć obszerny Profil pisać posty oraz komentowac i (👍🏻/👎🏻) posty innych użytkowników.
 
@@ -25,13 +25,13 @@ In the project directory, you should run:
 ```
     npm run server
 ```
-> Starts backend nodemon server on [http://localhost:5000](http://localhost:5000) <br />
-> In root directory you should create : ``default.json`` file and replace uppercases to yours data.
+> Starts backend Express server on [http://localhost:5000](http://localhost:5000) <br />
+> In root directory add a ``default.json`` file with following:
 ```json
  {
-   "mongoURI": "ADD_YOUR_CONNECTION_STRING",
+   "mongoURI": "<ADD_YOUR_MONGODB_ATLAS_URI_WITH_CREDENTIALS>",
    "jwtSecret": "mysecrettoken",
-   "githubToken": "YOUR_GITHUB_TOKEN"
+   "githubToken": "<YOUR_GITHUB_SECRET_TOKEN>"
  }
 ```
 ***
