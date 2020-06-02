@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
    const [formData, setFormData] = useState({
@@ -92,11 +93,11 @@ const Register = () => {
                className="btn btn-primary"
             />
             <p className="margin-vertical-1 already-account">
-               Masz juz konto? <a href="login.html"> Zaloguj się</a>
+               Masz juz konto? <Link to="/login"> Zaloguj się</Link>
             </p>
          </form>
       </Fragment>
    );
 };
-
+g
 export default Register;
