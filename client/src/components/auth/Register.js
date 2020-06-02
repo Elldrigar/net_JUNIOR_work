@@ -99,5 +99,5 @@ const Register = () => {
       </Fragment>
    );
 };
-g
+
 export default Register;
