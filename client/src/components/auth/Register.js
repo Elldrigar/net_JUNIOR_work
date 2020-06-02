@@ -27,7 +27,7 @@ const Register = () => {
          <p className="lead">
             <i className="fas fa-user" /> Utwórz Swoje konto
          </p>
-         <form className="form" onSubmit={(e) => onSubmit(e)}>
+         <form className="form margin-vertical-3" onSubmit={(e) => onSubmit(e)}>
             <div className="form__group">
                <input
                   className="form__input"
