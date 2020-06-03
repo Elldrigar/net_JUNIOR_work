@@ -1,7 +1,10 @@
 import React, { Fragment, useState } from 'react';
+import { connect } from 'react-redux';
+import { setAlert } from '../../actions/alert';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const Register = () => {
+const Register = ({ setAlert }) => {
    const [formData, setFormData] = useState({
       name: '',
       email: '',
@@ -15,9 +18,9 @@ const Register = () => {
    const onSubmit = (e) => {
       e.preventDefault();
       if (password !== confirmPassword) {
-         console.log('Hasła nie sa takie same!');
+         setAlert('Hasła nie sa takie same!', 'danger');
       } else {
-         console.log(formData);
+         console.log('SUCCES');
       }
    };
 
@@ -27,7 +30,7 @@ const Register = () => {
          <p className="lead">
             <i className="fas fa-user" /> Utwórz Swoje konto
          </p>
-         <form className="form margin-vertical-3" onSubmit={(e) => onSubmit(e)}>
+         <form className="form margin-vertical-3" onSubmit={onSubmit}>
             <div className="form__group">
                <input
                   className="form__input"
@@ -35,7 +38,7 @@ const Register = () => {
                   name="name"
                   placeholder="Imię"
                   value={name}
-                  onChange={(e) => onChange(e)}
+                  onChange={onChange}
                   required
                   minLength="5"
                />
@@ -50,7 +53,7 @@ const Register = () => {
                   name="email"
                   placeholder="E-mail"
                   value={email}
-                  onChange={(e) => onChange(e)}
+                  onChange={onChange}
                   required
                />
                <label className="form__label" htmlFor="email">
@@ -64,7 +67,7 @@ const Register = () => {
                   placeholder="Hasło"
                   name="password"
                   value={password}
-                  onChange={(e) => onChange(e)}
+                  onChange={onChange}
                   minLength="8"
                   required
                />
@@ -79,7 +82,7 @@ const Register = () => {
                   placeholder="Potwierdź hasło"
                   name="confirmPassword"
                   value={confirmPassword}
-                  onChange={(e) => onChange(e)}
+                  onChange={onChange}
                   minLength="8"
                   required
                />
@@ -100,4 +103,11 @@ const Register = () => {
    );
 };
 
-export default Register;
+Register.propTypes = {
+   setAlert: PropTypes.func.isRequired
+};
+
+export default connect(
+    null,
+    { setAlert }
+    )(Register);
