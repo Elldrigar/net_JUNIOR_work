@@ -18,6 +18,8 @@ const CreateProfile = (props) => {
       instagram: '',
    });
 
+   const [displaySocialInputs, toggleSocialInputs] = useState(false);
+
    const {
       company,
       website,
@@ -32,6 +34,7 @@ const CreateProfile = (props) => {
       youtube,
       instagram,
    } = formData;
+
    return (
       <Fragment>
          <h1 className="large text-primary">Stwórz swoj profil</h1>
@@ -131,61 +134,66 @@ const CreateProfile = (props) => {
             </div>
 
             <div className="margin-vertical-2">
-               <button type="button" className="btn btn-light">
+               <button
+                  type="button"
+                  className="btn btn-light"
+                  onClick={() => toggleSocialInputs(!displaySocialInputs)}
+               >
                   Dodaj linki do sieci społecznościowej
                </button>
                <span>Opcjonalnie</span>
             </div>
 
-            <div className="form__group social-input margin-vertical-1">
-               <i className="fab fa-twitter fa-2x"/>
-               <input
-                  className="form__input--noborder"
-                  type="text"
-                  placeholder="Twitter URL"
-                  name="twitter"
-               />
-            </div>
+            {displaySocialInputs && (
+               <Fragment>
+                  <div className="form__group social-input margin-vertical-1">
+                     <i className="fab fa-twitter fa-2x" />
+                     <input
+                        className="form__input--noborder"
+                        type="text"
+                        placeholder="Twitter URL"
+                        name="twitter"
+                     />
+                  </div>
+                  <div className="form__group social-input margin-vertical-1">
+                     <i className="fab fa-facebook fa-2x" />
+                     <input
+                        className="form__input--noborder"
+                        type="text"
+                        placeholder="Facebook URL"
+                        name="facebook"
+                     />
+                  </div>
+                  <div className="form__group social-input margin-vertical-1">
+                     <i className="fab fa-youtube fa-2x" />
+                     <input
+                        className="form__input--noborder"
+                        type="text"
+                        placeholder="YouTube URL"
+                        name="youtube"
+                     />
+                  </div>
+                  <div className="form__group social-input margin-vertical-1">
+                     <i className="fab fa-linkedin fa-2x" />
+                     <input
+                        className="form__input--noborder"
+                        type="text"
+                        placeholder="Linkedin URL"
+                        name="linkedin"
+                     />
+                  </div>
+                  <div className="form__group social-input margin-vertical-1">
+                     <i className="fab fa-instagram fa-2x" />
+                     <input
+                        className="form__input--noborder"
+                        type="text"
+                        placeholder="Instagram URL"
+                        name="instagram"
+                     />
+                  </div>
+               </Fragment>
+            )}
 
-            <div className="form__group social-input margin-vertical-1">
-               <i className="fab fa-facebook fa-2x"/>
-               <input
-                  className="form__input--noborder"
-                  type="text"
-                  placeholder="Facebook URL"
-                  name="facebook"
-               />
-            </div>
-
-            <div className="form__group social-input margin-vertical-1">
-               <i className="fab fa-youtube fa-2x"/>
-               <input
-                  className="form__input--noborder"
-                  type="text"
-                  placeholder="YouTube URL"
-                  name="youtube"
-               />
-            </div>
-
-            <div className="form__group social-input margin-vertical-1">
-               <i className="fab fa-linkedin fa-2x"/>
-               <input
-                  className="form__input--noborder"
-                  type="text"
-                  placeholder="Linkedin URL"
-                  name="linkedin"
-               />
-            </div>
-
-            <div className="form__group social-input margin-vertical-1">
-               g<i className="fab fa-instagram fa-2x"/>
-               <input
-                  className="form__input--noborder"
-                  type="text"
-                  placeholder="Instagram URL"
-                  name="instagram"
-               />
-            </div>
             <input
                type="submit"
                value="Zatwierdź"
