@@ -26,7 +26,12 @@ const Dashboard = ({
             <Fragment>MA PROFIL</Fragment>
          ) : (
             <Fragment>
-               <p>Nie masz jeszcze utworzonego Profilu 🙁</p>
+               <p>
+                  Nie masz jeszcze utworzonego Profilu{' '}
+                  <span aria-label="Sad face" role="img">
+                     🙁
+                  </span>
+               </p>
                <Link
                   to="/create-profile"
                   className="btn btn-primary margin-vertical-2"
