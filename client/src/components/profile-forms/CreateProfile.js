@@ -35,6 +35,9 @@ const CreateProfile = (props) => {
       instagram,
    } = formData;
 
+   const onChange = (e) =>
+      setFormData({ ...formData, [e.target.name]: e.target.value });
+
    return (
       <Fragment>
          <h1 className="large text-primary">Stwórz swoj profil</h1>
@@ -45,7 +48,13 @@ const CreateProfile = (props) => {
          <small className="">* wymagane</small>
          <form className="form">
             <div className="form__group margin-vertical-2">
-               <select className="form__input--noborder" name="status" required>
+               <select
+                  className="form__input--noborder"
+                  name="status"
+                  value={status}
+                  onChange={(e) => onChange(e)}
+                  required
+               >
                   <option selected disabled value="0">
                      * Wybierz status zawodowy
                   </option>
@@ -67,6 +76,8 @@ const CreateProfile = (props) => {
                   type="text"
                   id="text"
                   placeholder="Firma"
+                  value={company}
+                  onChange={(e) => onChange(e)}
                   name="company"
                />
                <label className="form__label" htmlFor="text">
@@ -79,6 +90,8 @@ const CreateProfile = (props) => {
                   className="form__input--noborder"
                   type="text"
                   placeholder="Strona internetowa"
+                  value={website}
+                  onChange={(e) => onChange(e)}
                   name="website"
                />
                <label className="form__label" htmlFor="text">
@@ -91,6 +104,8 @@ const CreateProfile = (props) => {
                   className="form__input--noborder"
                   type="text"
                   placeholder="Lokalizacja"
+                  value={location}
+                  onChange={(e) => onChange(e)}
                   name="location"
                />
                <label className="form__label" htmlFor="text">
@@ -102,6 +117,8 @@ const CreateProfile = (props) => {
                   className="form__input--noborder"
                   type="text"
                   placeholder="* Umiejętności"
+                  value={skills}
+                  onChange={(e) => onChange(e)}
                   name="skills"
                   required
                />
@@ -115,6 +132,8 @@ const CreateProfile = (props) => {
                   className="form__input--noborder"
                   type="text"
                   placeholder="Github Nazwa użytkownika"
+                  value={githubusername}
+                  onChange={(e) => onChange(e)}
                   name="githubusername"
                />
                <label className="form__label" htmlFor="text">
@@ -126,6 +145,8 @@ const CreateProfile = (props) => {
                <textarea
                   className="form__input--noborder"
                   placeholder="Krótko o Tobie"
+                  value={bio}
+                  onChange={(e) => onChange(e)}
                   name="bio"
                />
                <label className="form__label--area" htmlFor="text">
@@ -152,6 +173,8 @@ const CreateProfile = (props) => {
                         className="form__input--noborder"
                         type="text"
                         placeholder="Twitter URL"
+                        value={twitter}
+                        onChange={(e) => onChange(e)}
                         name="twitter"
                      />
                   </div>
@@ -161,6 +184,8 @@ const CreateProfile = (props) => {
                         className="form__input--noborder"
                         type="text"
                         placeholder="Facebook URL"
+                        value={facebook}
+                        onChange={(e) => onChange(e)}
                         name="facebook"
                      />
                   </div>
@@ -170,6 +195,8 @@ const CreateProfile = (props) => {
                         className="form__input--noborder"
                         type="text"
                         placeholder="YouTube URL"
+                        value={youtube}
+                        onChange={(e) => onChange(e)}
                         name="youtube"
                      />
                   </div>
@@ -179,6 +206,8 @@ const CreateProfile = (props) => {
                         className="form__input--noborder"
                         type="text"
                         placeholder="Linkedin URL"
+                        value={linkedin}
+                        onChange={(e) => onChange(e)}
                         name="linkedin"
                      />
                   </div>
@@ -188,6 +217,8 @@ const CreateProfile = (props) => {
                         className="form__input--noborder"
                         type="text"
                         placeholder="Instagram URL"
+                        value={instagram}
+                        onChange={(e) => onChange(e)}
                         name="instagram"
                      />
                   </div>
