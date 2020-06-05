@@ -1,8 +1,10 @@
 import React, { Fragment, useState } from 'react';
+import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { createProfile } from "../../actions/profile";
 
-const CreateProfile = (props) => {
+const CreateProfile = ({ createProfile, history }) => {
    const [formData, setFormData] = useState({
       company: '',
       website: '',
@@ -38,6 +40,11 @@ const CreateProfile = (props) => {
    const onChange = (e) =>
       setFormData({ ...formData, [e.target.name]: e.target.value });
 
+   const onSubmit = (e) => {
+      e.preventDefault();
+      createProfile(formData, history);
+   }
+
    return (
       <Fragment>
          <h1 className="large text-primary">Stwórz swoj profil</h1>
@@ -46,14 +53,14 @@ const CreateProfile = (props) => {
             profil się wyróżniał.
          </p>
          <small className="">* wymagane</small>
-         <form className="form">
+         <form className="form" onSubmit={e => onSubmit(e)}>
             <div className="form__group margin-vertical-2">
                <select
                   className="form__input--noborder"
                   name="status"
                   value={status}
                   onChange={(e) => onChange(e)}
-                  required
+                  // required
                >
                   <option selected disabled value="0">
                      * Wybierz status zawodowy
@@ -120,7 +127,7 @@ const CreateProfile = (props) => {
                   value={skills}
                   onChange={(e) => onChange(e)}
                   name="skills"
-                  required
+                  // required
                />
                <label className="form__label" htmlFor="text">
                   <strong>Umiejętności:</strong> Proszę odziel przecinkami
@@ -232,7 +239,7 @@ const CreateProfile = (props) => {
             />
             <a
                className="btn btn-light margin-vertical-1"
-               href="dashboard.html"
+               href="#!"
             >
                Wróć
             </a>
@@ -241,6 +248,8 @@ const CreateProfile = (props) => {
    );
 };
 
-CreateProfile.propTypes = {};
+CreateProfile.propTypes = {
+   createProfile: PropTypes.func.isRequired,
+};
 
-export default CreateProfile;
+export default connect(null, { createProfile })(withRouter(CreateProfile));
