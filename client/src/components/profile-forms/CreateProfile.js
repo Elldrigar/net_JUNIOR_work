@@ -237,12 +237,9 @@ const CreateProfile = ({ createProfile, history }) => {
                value="Zatwierdź"
                className="btn btn-primary margin-vertical-1"
             />
-            <a
-               className="btn btn-light margin-vertical-1"
-               href="#!"
-            >
+            <Link to="/dashboard" className="btn btn-light margin-vertical-1">
                Wróć
-            </a>
+            </Link>
          </form>
       </Fragment>
    );
