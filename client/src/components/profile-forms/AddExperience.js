@@ -136,9 +136,9 @@ const AddExperience = ({ addExperience, history }) => {
                value="Zatwierdź"
                className="btn btn-primary margin-vertical-1"
             />
-            <a className="btn margin-vertical-1" href="dashboard.html">
+            <Link className="btn margin-vertical-1" to="/dashboard">
                Wróć
-            </a>
+            </Link>
          </form>
       </Fragment>
    );
