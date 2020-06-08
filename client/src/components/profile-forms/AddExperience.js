@@ -1,16 +1,26 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addExperience } from '../../actions/profile';
-import { Fragment } from 'react';
+
 
 const AddExperience = (props) => {
+   const [formData, setDormData] = useState({
+      company: '',
+      title: '',
+      location: '',
+      from: '',
+      to: '',
+      current: false,
+      description: '',
+   });
+
    return (
       <Fragment>
          <h1 className="large text-primary">Dodaj doświadczenie</h1>
          <p className="lead">
-            <i className="fas fa-laptop-code"/>
+            <i className="fas fa-laptop-code" />
             Dodaj dowolne stanowisko programistyczne, które posiadałeś w
             przeszłości
          </p>
@@ -100,4 +110,4 @@ const AddExperience = (props) => {
 AddExperience.propTypes = {
    addExperience: PropTypes.func.isRequired,
 };
-export default conncect(null, { addExperience })(AddExperience);
+export default connect(null, { addExperience })(AddExperience);
