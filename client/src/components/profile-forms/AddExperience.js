@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addExperience } from '../../actions/profile';
 
-const AddExperience = (props) => {
+const AddExperience = ({ addExperience, history }) => {
    const [formData, setFormData] = useState({
       company: '',
       title: '',
@@ -37,7 +37,10 @@ const AddExperience = (props) => {
             przeszłości
          </p>
          <small className="">* wymagane</small>
-         <form className="form">
+         <form className="form" onSubmit={e => {
+         	e.preventDefault();
+         	addExperience(formData, history);
+         }}>
             <div className="margin-vertical-1">
                <input
                   className="form__input--noborder"
