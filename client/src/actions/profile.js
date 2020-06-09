@@ -1,6 +1,12 @@
 import axios from 'axios';
 import { setAlert } from './alert';
-import { GET_PROFILE, PROFILE_ERROR, UPDATE_PROFILE } from './types';
+import {
+   GET_PROFILE,
+   PROFILE_ERROR,
+   UPDATE_PROFILE,
+   CLEAR_PROFILE,
+   DELETE_ACCOUNT,
+} from './types';
 
 //*** GET CURRENT USER PROFILE***//
 export const getCurrentProfile = () => async (dispatch) => {
@@ -143,5 +149,25 @@ export const deleteEducation = (id) => async (dispatch) => {
          type: PROFILE_ERROR,
          payload: { msg: err.response.statusText, status: err.response.status },
       });
+   }
+};
+
+//*** DELETE ACCOUNT ***//
+export const deleteAccount = () => async (dispatch) => {
+   if (window.confirm('Jesteś pewny? To NIEODWRACALNE!')) {
+      try {
+         const res = await axios.delete('/api/profil');
+         dispatch({ type: CLEAR_PROFILE });
+         dispatch({ type: DELETE_ACCOUNT });
+         dispatch(setAlert('Twoje konto zostało usunięte!', 'success'));
+      } catch (err) {
+         dispatch({
+            type: PROFILE_ERROR,
+            payload: {
+               msg: err.response.statusText,
+               status: err.response.status,
+            },
+         });
+      }
    }
 };
