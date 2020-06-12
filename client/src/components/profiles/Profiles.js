@@ -1,15 +1,39 @@
 import React, { Fragment, useEffect } from 'react';
+import Spinner from '../layout/Spinner';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getProfiles } from '../../actions/profile';
-import Spinner from '../layout/Spinner';
+import ProfileItem from './ProfileItem';
 
 const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
-	useEffect(() => {
-		getProfiles();
-	}, []);
+   useEffect(() => {
+      getProfiles();
+   }, []);
 
-   return <div></div>;
+   return (
+      <Fragment>
+         {loading ? (
+            <Spinner />
+         ) : (
+            <Fragment>
+               <h1 className="large text-primary">Użytkownicy</h1>
+               <p className="lead">
+                  <i className="fas fa-user-tag" /> Przyglądaj profile innych
+                  juniorów
+               </p>
+               <div className="profiles">
+                  {profiles.length > 0 ? (
+                     profiles.map((profile) => (
+                        <ProfileItem key={profile._id} profile={profile} />
+                     ))
+                  ) : (
+                     <h4>Nie ma żadnych użytkowników...</h4>
+                  )}
+               </div>
+            </Fragment>
+         )}
+      </Fragment>
+   );
 };
 
 Profiles.propTypes = {
