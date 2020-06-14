@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Spinner from '../layout/Spinner';
 import { getProfileById } from '../../actions/profile';
+import ProfileTop from "./ProfileTop";
 
 const Profile = ({
    getProfileById,
@@ -31,6 +32,9 @@ const Profile = ({
                         Edytuj Profil
                      </Link>
                   )}
+				<div className="profile-grid margin-vertical-1" >
+					<ProfileTop profile={profile}/>
+				</div>
             </Fragment>
          )}
       </Fragment>
