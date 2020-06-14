@@ -14,9 +14,9 @@ const Profile = ({
       getProfileById(match.params.id);
    }, [getProfileById]);
 
-   return <div>
-	   profil
-   </div>;
+	return <Fragment>
+		{profile === null || loading ? <Spinner/> : <Fragment>PROFILE</Fragment>}
+	</Fragment>;
 };
 
 Profile.propTypes = {
