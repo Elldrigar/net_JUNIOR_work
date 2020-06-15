@@ -6,7 +6,7 @@ const ProfileExperience = ({
    experience: { company, title, to, from, description },
 }) => (
    <div>
-      <h3 className="text-dark">{company.name}</h3>
+      <h3 className="text-dark">{company}</h3>
       <p>
          <Moment format="YYYY/MM/DD">{from}</Moment> -{' '}
          {!to ? ' Trwa' : <Moment format="YYYY/MM/DD">{to}</Moment>}
