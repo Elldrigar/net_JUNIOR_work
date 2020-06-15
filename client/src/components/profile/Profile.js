@@ -7,6 +7,7 @@ import { getProfileById } from '../../actions/profile';
 import ProfileTop from './ProfileTop';
 import ProfileAbout from './ProfileAbout';
 import ProfileExperience from './ProfileExperience';
+import ProfileEducation from './ProfileEducation';
 
 const Profile = ({
    getProfileById,
@@ -50,6 +51,22 @@ const Profile = ({
                         </Fragment>
                      ) : (
                         <h4>Brak doświadczenia!</h4>
+                     )}
+                  </div>
+
+                  <div className="profile-edu bg-white padding-2">
+                     <h2 className="text-primary">Edukacja</h2>
+                     {profile.education.length > 0 ? (
+                         <Fragment>
+                            {profile.education.map((education) => (
+                                <ProfileEducation
+                                    key={education._id}
+                                    education={education}
+                                />
+                            ))}
+                         </Fragment>
+                     ) : (
+                         <h4>Brak edukacji/kursów!</h4>
                      )}
                   </div>
                </div>
