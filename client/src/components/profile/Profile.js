@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Spinner from '../layout/Spinner';
 import { getProfileById } from '../../actions/profile';
-import ProfileTop from "./ProfileTop";
-import ProfileAbout from "./ProfileAbout";
+import ProfileTop from './ProfileTop';
+import ProfileAbout from './ProfileAbout';
+import ProfileExperience from './ProfileExperience';
 
 const Profile = ({
    getProfileById,
@@ -33,10 +34,25 @@ const Profile = ({
                         Edytuj Profil
                      </Link>
                   )}
-				<div className="profile-grid margin-vertical-1" >
-					<ProfileTop profile={profile}/>
-					<ProfileAbout profile={profile}/>
-				</div>
+               <div className="profile-grid margin-vertical-1">
+                  <ProfileTop profile={profile} />
+                  <ProfileAbout profile={profile} />
+                  <div className="profile-exp bg-white padding-2">
+                     <h2 className="text-primary">Doświadczenie</h2>
+                     {profile.experience.length > 0 ? (
+                        <Fragment>
+                           {profile.experience.map((experience) => (
+                              <ProfileExperience
+                                 key={experience._id}
+                                 experience={experience}
+                              />
+                           ))}
+                        </Fragment>
+                     ) : (
+                        <h4>Brak doświadczenia!</h4>
+                     )}
+                  </div>
+               </div>
             </Fragment>
          )}
       </Fragment>
