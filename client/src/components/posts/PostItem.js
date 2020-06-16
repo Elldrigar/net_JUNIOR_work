@@ -20,18 +20,26 @@ const PostItem = ({
          </a>
       </div>
       <div>
-         <p className="margin-1">
-	         {text}
+         <p className="margin-1">{text}</p>
+         <p>
+            Napisany : <Moment format="YYYY/MM/DD">{date}</Moment>
          </p>
          <button className="btn">
-            <i className="fas fa-thumbs-up" /> <span>4</span>
+            <i className="fas fa-thumbs-up" />{' '}
+            <span>{likes.length > 0 && (<span>{likes.length}</span>)}</span>
          </button>
          <button className="btn">
             <i className="fas fa-thumbs-down" /> <span>0</span>
          </button>
-         <a className="btn btn-primary" href="post.html">
-            Dyskusja
-         </a>
+         <Link className="btn btn-primary" to={`/post/${_id}`}>
+            Komentarze{' '}
+            {comments.length > 0 && <span className="">{comments.length}</span>}
+         </Link>
+         {!auth.loading && user === auth.user._id && (
+            <button type="button" className="btn btn-danger">
+               <i className="fas fa-times" />
+            </button>
+         )}
       </div>
    </div>
 );
