@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
-import { connect } from 'react-moment';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 const PostItem = ({
