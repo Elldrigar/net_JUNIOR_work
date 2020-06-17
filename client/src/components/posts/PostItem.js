@@ -61,7 +61,7 @@ const PostItem = ({
 );
 
 PostItem.defaultProps = {
-   showAction: true,
+   showActions: true,
 };
 
 PostItem.propTypes = {
