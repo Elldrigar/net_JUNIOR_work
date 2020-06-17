@@ -1,0 +1,7 @@
+{
+  "mongoURI": "mongodb+srv://elldrigar:ptakusoft83@juniordev-3d2mc.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "mysecrettoken",
+  "githubClientID": "600f8fc8f8377956bf4c",
+  "githubSecret": "8a612ec3d9eeb03084107aac16499e2f94b276d8",
+  "githubToken": "8485594813fc679990452d01e85f892e00bdbe08"
+}
