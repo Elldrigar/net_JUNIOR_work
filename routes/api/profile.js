@@ -8,6 +8,7 @@ const Post = require('../../models/Post');
 const request = require('request');
 const config = require('config');
 const normalize = require('normalize-url');
+const axios = require('axios');
 
 // @route   GET api/profile/me
 // @desc    Get current users profile
