@@ -1,4 +1,10 @@
-# Junior Network ‍
+<h1 align="center">
+  <br>
+  <a href=""><img src="https://gawron.me/gawronLogo.png" alt="GawronMe" width="150"></a>
+  <br>
+  Junior Network
+  <br>
+</h1>
 
 ![GitHub Release][gitHub-url]
 ![MIT License][mit-license-image]
@@ -12,6 +18,19 @@
 # 🚧 Project is under construction‼️ 🚧
 ***
 🇵🇱 __'Junior Network' to aplikacja w której można założyć konto, storzyć obszerny Profil pisać posty oraz komentowac i (👍🏻/👎🏻) posty innych użytkowników.
+
+
+# Ver. 1.0.0 Pre-release
+ - available at [HEROKU](https://warm-escarpment-27152.herokuapp.com/) - Wait few sec. for 
+waking up the server. 😃
+ - Works well on desktops only!
+ - 
+ # Working on:
+ - Password reseting by e-mail
+ - Upload files for avatar
+ - RWD, and new design
+ 
+ 
 
 
 ## Available Scripts:
