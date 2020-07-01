@@ -56,7 +56,7 @@ In the project directory, you should run:
 ***
 
 ```
-    npm dev
+    npm run dev
 ```
 > Starts backend server [http://localhost:5000](http://localhost:5000) and frontend server [http://localhost:3000](http://localhost:3000) 
 together.
